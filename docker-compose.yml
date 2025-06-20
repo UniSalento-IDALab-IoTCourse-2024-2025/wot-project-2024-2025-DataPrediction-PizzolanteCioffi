@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+
+  prediction-be:
+    image: openjdk:23
+    container_name: prediction-be
+    ports:
+      - 8083:8080
+      - 8003:8000
+
+    expose:
+      - "8003"
+
+    depends_on:
+      - prediction-db
+    networks:
+      - my-net
+      #- shared-net
+    volumes:
+      #- ./build/libs/DataPrediction-0.0.1-SNAPSHOT.jar:/app/app.jar
+      - ./DataPrediction-0.0.1-SNAPSHOT.jar:/app/app.jar
+
+    working_dir: /app
+    entrypoint: java -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000 -jar /app/app.jar
+  prediction-db:
+    image: mongo:5.0
+    container_name: prediction-db
+    ports:
+      - 27020:27017
+    networks:
+      - my-net
+      #- shared-net
+networks:
+  my-net:
+    driver: "bridge"
+    name: my-net
+  #shared-net:
+    #external: true
+
