@@ -156,7 +156,13 @@ public class PredictionRestController {
 
             ObjectMapper objectMapper = new ObjectMapper();
             byte[] payload = objectMapper.writeValueAsBytes(message);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             publisherService.publish("data", payload, 1);
+
 
         }
 
