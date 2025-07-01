@@ -40,7 +40,7 @@ In particolare DataPrediction prende i dati aggregati da DataCollector, li riorg
 
 ### Frontend Mobile
 
-- Applicazione mobile (frontend)  
+- **Applicazione mobile (frontend)**  
 Il frontend mobile dell’applicazione è stato sviluppato in React Native ed è progettato per operare su dispositivi Android, in quanto alcune funzionalità fondamentali, come l’accesso al registro delle chiamate, richiedono permessi speciali non disponibili su iOS.
 L’applicazione consente all’utente di visualizzare in tempo reale i dati raccolti durante la giornata corrente (frequenza cardiaca, ore totali di sonno, posizione e durata chiamate), oltre a eventuali notifiche o segnalazioni provenienti dai modelli di intelligenza artificiale. 
 
